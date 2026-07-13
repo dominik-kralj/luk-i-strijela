@@ -1,6 +1,7 @@
 ---
 import SignatureDivider from './SignatureDivider.astro';
 import { opg } from '../lib/data';
+import { getMapsUrl } from '../lib/format';
 
 const year = new Date().getFullYear();
 ---
@@ -12,7 +13,14 @@ const year = new Date().getFullYear();
 
   <div class="mx-auto max-w-6xl px-5 pb-10 text-center sm:px-8">
     <p class="font-display text-lg text-parchment">{opg.name}</p>
-    <p class="mt-1 text-sm">{opg.location}</p>
+    <a
+      href={getMapsUrl(opg.location)}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-1 inline-block text-sm underline decoration-parchment/30 underline-offset-4 transition-colors hover:text-onion-skin"
+    >
+      {opg.location}
+    </a>
 
     {opg.social && (opg.social.instagram || opg.social.facebook) && (
       <div class="mt-5 flex justify-center gap-5">

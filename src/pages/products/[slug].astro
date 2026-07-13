@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SignatureDivider from '../../components/SignatureDivider.astro';
+import { products, getProductImage, getPhotoImage } from '../../lib/data';
+import { formatPrice } from '../../lib/format';
+import type { Product } from '../../lib/data';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const image = getProductImage(product.image);
+---
+
+<Layout title={product.name} description={product.description}>
+  <Header />
+  <main>
+    <section class="border-b border-soil/15 bg-white/40">
+      <div class="mx-auto max-w-3xl px-5 pt-10 sm:px-8 sm:pt-14">
+        <p class="font-mono text-xs uppercase tracking-widest text-field/70">{product.category}</p>
+        <h1 class="mt-2 text-balance font-display text-4xl font-semibold text-soil sm:text-6xl">
+          {product.name}
+        </h1>
+      </div>
+
+      <div class="relative mx-auto mt-8 max-w-3xl px-5 sm:px-8">
+        <div class="flex items-center justify-center bg-parchment">
+          <Image
+            src={image}
+            alt={product.name}
+            class="h-72 w-auto object-contain sm:h-[26rem]"
+            widths={[400, 700]}
+            sizes="(min-width: 640px) 500px, 90vw"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="absolute bottom-4 right-8 -rotate-2 rounded-sm border border-soil/25 bg-parchment px-4 py-2 text-right shadow-sm sm:right-12">
+          <span class="block font-mono text-xl font-medium leading-none text-soil sm:text-2xl">
+            {formatPrice(product.price)}
+          </span>
+          <span class="block font-mono text-[0.65rem] uppercase tracking-wide text-soil/60">
+            /{product.unit}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
+      <p class="border-b border-soil/15 pb-6 text-lg leading-relaxed text-soil/80 sm:text-xl">
+        {product.description}
+      </p>
+
+      <div class="mt-10">
+        <p class="font-mono text-xs uppercase tracking-widest text-field/70">Kako raste</p>
+        <p class="mt-4 max-w-prose text-balance font-display text-2xl leading-snug text-soil sm:text-3xl">
+          {product.growingStory}
+        </p>
+      </div>
+
+      {product.processImages.length > 0 && (
+        <div class="mt-10 grid grid-cols-2 gap-4">
+          {product.processImages.map((fileName) => (
+            <Image
+              src={getPhotoImage(fileName)}
+              alt=""
+              class="h-40 w-full rounded-sm object-cover sm:h-56"
+              widths={[400, 700]}
+              sizes="(min-width: 640px) 340px, 46vw"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      )}
+
+      <div class="mt-12 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <a
+          href="/#contact"
+          class="inline-block rounded-sm bg-onion-skin px-6 py-3 font-body text-sm font-medium text-soil shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-onion-skin/90 sm:text-base"
+        >
+          Naruči {product.name.toLowerCase()}
+        </a>
+        <a href="/#products" class="font-mono text-sm text-field hover:text-arrow">
+          &larr; natrag na ponudu
+        </a>
+      </div>
+
+      <SignatureDivider tone="light" />
+    </section>
+  </main>
+  <Footer />
+</Layout>

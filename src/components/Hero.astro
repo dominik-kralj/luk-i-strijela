@@ -1,23 +1,29 @@
 ---
 import { Image } from 'astro:assets';
-import heroImage from '../assets/photos/field-sunset.jpg';
-import { opg } from '../lib/data';
+import { opg, getPhotoImage } from '../lib/data';
+
+const heroImages = opg.heroImages;
 ---
 
-<section id="top" class="relative overflow-hidden">
+<section id="top" class="relative overflow-hidden" data-hero-carousel>
   <div class="relative h-[68vh] min-h-[420px] w-full sm:h-[78vh]">
-    <Image
-      src={heroImage}
-      alt={`Polje OPG-a ${opg.name}`}
-      class="h-full w-full object-cover"
-      widths={[800, 1200, 1600]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-soil/85 via-soil/20 to-transparent"></div>
+    {heroImages.map((fileName, i) => (
+      <Image
+        src={getPhotoImage(fileName)}
+        alt={i === 0 ? `Polje OPG-a ${opg.name}` : ''}
+        class="absolute inset-0 z-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out"
+        style={{ opacity: i === 0 ? 1 : 0 }}
+        data-hero-slide={i}
+        widths={[800, 1200, 1600]}
+        sizes="100vw"
+        loading={i === 0 ? 'eager' : 'lazy'}
+        fetchpriority={i === 0 ? 'high' : undefined}
+      />
+    ))}
 
-    <div class="absolute inset-x-0 bottom-0 px-5 pb-10 sm:px-10 sm:pb-14">
+    <div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-soil/85 via-soil/20 to-transparent"></div>
+
+    <div class="absolute inset-x-0 bottom-0 z-20 px-5 pb-10 sm:px-10 sm:pb-14">
       <div class="mx-auto max-w-6xl">
         <h1 class="text-balance font-display text-4xl font-semibold leading-tight text-parchment sm:text-6xl">
           {opg.name}
@@ -33,5 +39,78 @@ import { opg } from '../lib/data';
         </a>
       </div>
     </div>
+
+    {heroImages.length > 1 && (
+      <>
+        <button
+          type="button"
+          data-hero-prev
+          aria-label="Prethodna fotografija"
+          class="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-parchment/40 bg-soil/30 px-3 py-2 text-parchment backdrop-blur-sm transition-colors hover:bg-soil/50 sm:left-6"
+        >
+          &larr;
+        </button>
+        <button
+          type="button"
+          data-hero-next
+          aria-label="Sljedeća fotografija"
+          class="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-parchment/40 bg-soil/30 px-3 py-2 text-parchment backdrop-blur-sm transition-colors hover:bg-soil/50 sm:right-6"
+        >
+          &rarr;
+        </button>
+        <div class="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 sm:bottom-6">
+          {heroImages.map((_, i) => (
+            <button
+              type="button"
+              data-hero-dot={i}
+              aria-label={`Fotografija ${i + 1}`}
+              data-active={i === 0}
+              class="h-2 w-2 rounded-full bg-parchment/40 transition-colors data-[active=true]:bg-parchment"
+            ></button>
+          ))}
+        </div>
+      </>
+    )}
   </div>
 </section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-hero-carousel]');
+  const slides = Array.from(root?.querySelectorAll<HTMLElement>('[data-hero-slide]') ?? []);
+  const dots = Array.from(root?.querySelectorAll<HTMLElement>('[data-hero-dot]') ?? []);
+
+  if (root && slides.length > 1) {
+    let index = 0;
+    let timer: ReturnType<typeof setInterval> | undefined;
+
+    function show(next: number) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.style.opacity = i === index ? '1' : '0';
+      });
+      dots.forEach((dot, i) => dot.setAttribute('data-active', String(i === index)));
+    }
+
+    function restart() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => show(index + 1), 6000);
+    }
+
+    root.querySelector('[data-hero-next]')?.addEventListener('click', () => {
+      show(index + 1);
+      restart();
+    });
+    root.querySelector('[data-hero-prev]')?.addEventListener('click', () => {
+      show(index - 1);
+      restart();
+    });
+    dots.forEach((dot, i) =>
+      dot.addEventListener('click', () => {
+        show(i);
+        restart();
+      })
+    );
+
+    restart();
+  }
+</script>

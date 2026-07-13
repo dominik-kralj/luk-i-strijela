@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Slatki krumpir">
+  <rect width="400" height="400" fill="#F1ECD8"/>
+  <path d="M118,168 C104,196 100,232 112,262 C100,286 104,316 128,332 C156,350 196,346 228,332
+           C260,346 296,338 312,312 C328,286 320,254 296,238 C306,210 298,178 272,160
+           C244,140 208,140 182,156 C160,142 132,144 118,168 Z"
+    fill="#C97C3D" stroke="#2B2116" stroke-width="4" stroke-linejoin="round"/>
+  <g stroke="#2B2116" stroke-opacity="0.3" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M148,186 C136,214 136,250 152,278"/>
+    <path d="M212,168 C202,204 204,246 222,282"/>
+    <path d="M268,192 C278,220 278,252 264,280"/>
+  </g>
+  <g stroke="#2B2116" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M150,168 C154,164 160,163 165,166"/>
+    <path d="M232,320 C236,325 242,327 248,325"/>
+  </g>
+</svg>

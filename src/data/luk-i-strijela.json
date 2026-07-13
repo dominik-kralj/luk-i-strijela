@@ -6,6 +6,12 @@
     "story": "Domaće, zdravo i provjereno povrće s našeg obiteljskog imanja. Birajte lokalno, jedite svježe i podržite domaću proizvodnju. Od naše obitelji vašoj!",
     "location": "Zdihovačka ulica, Jastrebarsko, 10450",
     "deliveryArea": "Dostava u Jastrebarskom i okolici, po dogovoru, ili osobno preuzimanje na OPG-u.",
+    "heroImages": [
+      "field-sunset.jpg",
+      "planting-tractor.jpg",
+      "hero-placeholder-1.svg",
+      "hero-placeholder-2.svg"
+    ],
     "contact": {
       "phone": "+385 92 434 6820",
       "email": "opglukistrijela@gmail.com"
@@ -17,36 +23,6 @@
   },
   "products": [
     {
-      "id": "luk",
-      "name": "Crveni luk",
-      "price": 1.8,
-      "unit": "kg",
-      "category": "Povrće",
-      "image": "onion.svg",
-      "description": "Ljuti crveni luk, ručno pleten i sušen na zraku prije skladištenja.",
-      "stripePriceId": null
-    },
-    {
-      "id": "mrkva",
-      "name": "Mrkva",
-      "price": 2.2,
-      "unit": "kg",
-      "category": "Povrće",
-      "image": "carrot.svg",
-      "description": "Slatka mrkva iz rahle slavonske zemlje, bez prskanja.",
-      "stripePriceId": null
-    },
-    {
-      "id": "krumpir",
-      "name": "Krumpir",
-      "price": 1.5,
-      "unit": "kg",
-      "category": "Povrće",
-      "image": "potato.svg",
-      "description": "Krumpir srednje veličine, idealan za pečenje i variva.",
-      "stripePriceId": null
-    },
-    {
       "id": "cesnjak",
       "name": "Bijeli češnjak",
       "price": 3.0,
@@ -54,6 +30,22 @@
       "category": "Povrće",
       "image": "garlic.svg",
       "description": "Domaći češnjak krupne glavice, brano ručno i sušeno u hladu.",
+      "available": true,
+      "growingStory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sadimo ga u jesen, ručno, čekić po čekić, u redove razmaknute taman toliko da zemlja može disati. Cijelu zimu miruje pod slamom, a kad dođe proljeće, prvi zeleni vrhovi probiju se kroz hladnu zemlju. Vadimo ga ručno, sušimo u hladu i pletemo u vijence po starom običaju.",
+      "processImages": ["field-sunset.jpg", "planting-tractor.jpg"],
+      "stripePriceId": null
+    },
+    {
+      "id": "batat",
+      "name": "Slatki krumpir",
+      "price": 2.5,
+      "unit": "kg",
+      "category": "Povrće",
+      "image": "sweet-potato.svg",
+      "description": "Slatki krumpir uzgojen na sunčanoj parceli, bez umjetnih gnojiva.",
+      "available": true,
+      "growingStory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sadnice sadimo krajem proljeća, kad se zemlja dovoljno zagrije, a onda ih puštamo da rastu polako, cijelo ljeto, uz redovito plijevljenje i zalijevanje. Berba je ručna, krajem ljeta, kad lišće požuti i zemlja sama kaže da je vrijeme.",
+      "processImages": ["planting-tractor.jpg", "field-sunset.jpg"],
       "stripePriceId": null
     }
   ]

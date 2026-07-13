@@ -1,8 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import SignatureDivider from './SignatureDivider.astro';
-import fieldWork from '../assets/photos/planting-tractor.jpg';
 import { opg } from '../lib/data';
+import { getMapsUrl } from '../lib/format';
 ---
 
 <section id="about" class="bg-field text-parchment">
@@ -19,7 +18,14 @@ import { opg } from '../lib/data';
       <div class="flex flex-col gap-6 sm:border-l sm:border-parchment/20 sm:pl-10">
         <div>
           <p class="font-mono text-xs uppercase tracking-widest text-sprout">Lokacija</p>
-          <p class="mt-1 text-lg">{opg.location}</p>
+          <a
+            href={getMapsUrl(opg.location)}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-1 block text-lg underline decoration-parchment/30 underline-offset-4 transition-colors hover:text-onion-skin"
+          >
+            {opg.location}
+          </a>
         </div>
         <div>
           <p class="font-mono text-xs uppercase tracking-widest text-sprout">Dostava</p>
@@ -27,15 +33,6 @@ import { opg } from '../lib/data';
         </div>
       </div>
     </div>
-
-    <Image
-      src={fieldWork}
-      alt={`Priprema polja, ${opg.name}`}
-      class="mt-12 h-64 w-full rounded-sm object-cover sm:h-96"
-      widths={[600, 900, 1400]}
-      sizes="(min-width: 1024px) 1152px, 100vw"
-      loading="lazy"
-    />
 
     <SignatureDivider tone="dark" />
   </div>

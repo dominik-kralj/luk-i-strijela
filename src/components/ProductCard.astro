@@ -13,7 +13,10 @@ const { product, eager = false } = Astro.props;
 const image = getProductImage(product.image);
 ---
 
-<article class="group flex flex-col overflow-hidden rounded-sm border border-soil/15 bg-white/40">
+<a
+  href={`/products/${product.id}`}
+  class="group flex flex-col overflow-hidden rounded-sm border border-soil/15 bg-white/40 transition-shadow hover:shadow-md"
+>
   <div class="relative aspect-square overflow-hidden bg-parchment">
     <Image
       src={image}
@@ -40,4 +43,4 @@ const image = getProductImage(product.image);
     <h3 class="font-display text-xl font-semibold text-soil">{product.name}</h3>
     <p class="text-sm leading-snug text-soil/70">{product.description}</p>
   </div>
-</article>
+</a>
