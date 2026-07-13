@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import SignatureDivider from './SignatureDivider.astro';
+import fieldWork from '../assets/photos/planting-tractor.jpg';
+import { opg } from '../lib/data';
+---
+
+<section id="about" class="bg-field text-parchment">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+    <div class="grid gap-10 sm:grid-cols-[1.3fr_1fr] sm:gap-16">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-sprout">Naša priča</p>
+        <h2 class="mt-2 font-display text-3xl font-semibold sm:text-4xl">O nama</h2>
+        <p class="mt-5 max-w-xl text-balance leading-relaxed text-parchment/90 sm:text-lg">
+          {opg.story}
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-6 sm:border-l sm:border-parchment/20 sm:pl-10">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-sprout">Lokacija</p>
+          <p class="mt-1 text-lg">{opg.location}</p>
+        </div>
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-sprout">Dostava</p>
+          <p class="mt-1 leading-snug text-parchment/90">{opg.deliveryArea}</p>
+        </div>
+      </div>
+    </div>
+
+    <Image
+      src={fieldWork}
+      alt={`Priprema polja, ${opg.name}`}
+      class="mt-12 h-64 w-full rounded-sm object-cover sm:h-96"
+      widths={[600, 900, 1400]}
+      sizes="(min-width: 1024px) 1152px, 100vw"
+      loading="lazy"
+    />
+
+    <SignatureDivider tone="dark" />
+  </div>
+</section>

@@ -1,0 +1,60 @@
+{
+  "opg": {
+    "name": "OPG Luk i strijela",
+    "slug": "luk-i-strijela",
+    "tagline": "Domaće, zdravo i provjereno povrće s našeg obiteljskog imanja.",
+    "story": "Domaće, zdravo i provjereno povrće s našeg obiteljskog imanja. Birajte lokalno, jedite svježe i podržite domaću proizvodnju. Od naše obitelji vašoj!",
+    "location": "Zdihovačka ulica, Jastrebarsko, 10450",
+    "deliveryArea": "Dostava u Jastrebarskom i okolici, po dogovoru, ili osobno preuzimanje na OPG-u.",
+    "contact": {
+      "phone": "+385 92 434 6820",
+      "email": "opglukistrijela@gmail.com"
+    },
+    "social": {
+      "instagram": "https://www.instagram.com/opglukistrijela/",
+      "facebook": "https://www.facebook.com/p/OPG-Luk-i-strijela-61590735776376/"
+    }
+  },
+  "products": [
+    {
+      "id": "luk",
+      "name": "Crveni luk",
+      "price": 1.8,
+      "unit": "kg",
+      "category": "Povrće",
+      "image": "onion.svg",
+      "description": "Ljuti crveni luk, ručno pleten i sušen na zraku prije skladištenja.",
+      "stripePriceId": null
+    },
+    {
+      "id": "mrkva",
+      "name": "Mrkva",
+      "price": 2.2,
+      "unit": "kg",
+      "category": "Povrće",
+      "image": "carrot.svg",
+      "description": "Slatka mrkva iz rahle slavonske zemlje, bez prskanja.",
+      "stripePriceId": null
+    },
+    {
+      "id": "krumpir",
+      "name": "Krumpir",
+      "price": 1.5,
+      "unit": "kg",
+      "category": "Povrće",
+      "image": "potato.svg",
+      "description": "Krumpir srednje veličine, idealan za pečenje i variva.",
+      "stripePriceId": null
+    },
+    {
+      "id": "cesnjak",
+      "name": "Bijeli češnjak",
+      "price": 3.0,
+      "unit": "kg",
+      "category": "Povrće",
+      "image": "garlic.svg",
+      "description": "Domaći češnjak krupne glavice, brano ručno i sušeno u hladu.",
+      "stripePriceId": null
+    }
+  ]
+}

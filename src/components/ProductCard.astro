@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import { getProductImage } from '../lib/data';
+import { formatPrice } from '../lib/format';
+import type { Product } from '../lib/data';
+
+interface Props {
+  product: Product;
+  eager?: boolean;
+}
+
+const { product, eager = false } = Astro.props;
+const image = getProductImage(product.image);
+---
+
+<article class="group flex flex-col overflow-hidden rounded-sm border border-soil/15 bg-white/40">
+  <div class="relative aspect-square overflow-hidden bg-parchment">
+    <Image
+      src={image}
+      alt={product.name}
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+      width={480}
+      height={480}
+      loading={eager ? 'eager' : 'lazy'}
+    />
+    <span
+      class="absolute bottom-3 right-3 -rotate-2 rounded-sm border border-soil/25 bg-parchment px-3 py-1.5 shadow-sm"
+      aria-hidden="false"
+    >
+      <span class="block font-mono text-base font-medium leading-none text-soil sm:text-lg">
+        {formatPrice(product.price)}
+      </span>
+      <span class="block text-right font-mono text-[0.65rem] uppercase tracking-wide text-soil/60">
+        /{product.unit}
+      </span>
+    </span>
+  </div>
+
+  <div class="flex flex-1 flex-col gap-1.5 px-4 py-4">
+    <h3 class="font-display text-xl font-semibold text-soil">{product.name}</h3>
+    <p class="text-sm leading-snug text-soil/70">{product.description}</p>
+  </div>
+</article>

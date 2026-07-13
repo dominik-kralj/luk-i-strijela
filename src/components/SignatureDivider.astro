@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import logoSoil from '../assets/logo/logo-mark-soil.png';
+import logoParchment from '../assets/logo/logo-mark-parchment.png';
+
+interface Props {
+  tone?: 'light' | 'dark';
+  class?: string;
+}
+
+const { tone = 'light', class: className = '' } = Astro.props;
+const mark = tone === 'dark' ? logoParchment : logoSoil;
+---
+
+<div class:list={['flex justify-center py-10 sm:py-14', className]} aria-hidden="true">
+  <Image src={mark} alt="" class="h-20 w-20 object-contain opacity-90 sm:h-24 sm:w-24" />
+</div>

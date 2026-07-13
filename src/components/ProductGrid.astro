@@ -1,0 +1,67 @@
+---
+import ProductCard from './ProductCard.astro';
+import { products, categories } from '../lib/data';
+
+const showFilters = categories.length > 1;
+---
+
+<section id="products" class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+  <div class="mb-8 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-widest text-field/70">Iz naše zemlje</p>
+      <h2 class="mt-2 font-display text-3xl font-semibold text-soil sm:text-4xl">Ponuda</h2>
+    </div>
+
+    {showFilters && (
+      <div class="flex flex-wrap gap-2" data-filter-group>
+        <button
+          type="button"
+          class="filter-btn rounded-full border border-soil/25 px-4 py-1.5 text-sm text-soil transition-colors data-[active=true]:bg-field data-[active=true]:text-parchment"
+          data-category="all"
+          data-active="true"
+        >
+          Sve
+        </button>
+        {categories.map((category) => (
+          <button
+            type="button"
+            class="filter-btn rounded-full border border-soil/25 px-4 py-1.5 text-sm text-soil transition-colors data-[active=true]:bg-field data-[active=true]:text-parchment"
+            data-category={category}
+            data-active="false"
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4" data-product-grid>
+    {products.map((product, i) => (
+      <div data-product-item data-category={product.category}>
+        <ProductCard product={product} eager={i < 4} />
+      </div>
+    ))}
+  </div>
+</section>
+
+{showFilters && (
+  <script>
+    const group = document.querySelector('[data-filter-group]');
+    const items = document.querySelectorAll<HTMLElement>('[data-product-item]');
+
+    group?.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('.filter-btn');
+      if (!button) return;
+
+      group.querySelectorAll('.filter-btn').forEach((btn) => btn.setAttribute('data-active', 'false'));
+      button.setAttribute('data-active', 'true');
+
+      const category = button.dataset.category;
+      items.forEach((item) => {
+        const show = category === 'all' || item.dataset.category === category;
+        item.classList.toggle('hidden', !show);
+      });
+    });
+  </script>
+)}

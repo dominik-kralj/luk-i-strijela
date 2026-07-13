@@ -1,0 +1,123 @@
+---
+import { opg } from '../lib/data';
+
+// TODO: replace with the real Web3Forms access key before going live.
+// Create one for free at https://web3forms.com — see README.md.
+const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+---
+
+<section id="contact" class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+  <p class="font-mono text-xs uppercase tracking-widest text-field/70">Narudžba</p>
+  <h2 class="mt-2 font-display text-3xl font-semibold text-soil sm:text-4xl">Kontakt</h2>
+  <p class="mt-4 max-w-lg leading-relaxed text-soil/75">
+    Pošaljite nam upit za narudžbu i javit ćemo vam se čim prije. Za brže dogovore, slobodno
+    nazovite ili pišite izravno na kontakte ispod.
+  </p>
+
+  <div class="mt-6 flex flex-col gap-1 font-mono text-sm text-soil/80 sm:flex-row sm:gap-6">
+    <a href={`tel:${opg.contact.phone.replace(/\s+/g, '')}`} class="hover:text-arrow">{opg.contact.phone}</a>
+    <a href={`mailto:${opg.contact.email}`} class="hover:text-arrow">{opg.contact.email}</a>
+  </div>
+
+  <form
+    id="order-form"
+    class="mt-8 flex flex-col gap-5 rounded-sm border border-soil/15 bg-white/40 p-6 sm:p-8"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+  >
+    <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+    <input type="hidden" name="subject" value={`Nova narudžba — ${opg.name}`} />
+    <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <div class="flex flex-col gap-1.5">
+      <label for="name" class="text-sm font-medium text-soil">Ime i prezime</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        required
+        class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+        placeholder="Ana Anić"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label for="contact" class="text-sm font-medium text-soil">Telefon ili e-mail</label>
+      <input
+        id="contact"
+        name="contact"
+        type="text"
+        required
+        class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+        placeholder="091 234 5678 ili ana@primjer.hr"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label for="order" class="text-sm font-medium text-soil">Što naručujete</label>
+      <input
+        id="order"
+        name="order"
+        type="text"
+        required
+        class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+        placeholder="npr. 2 kg luka, 3 kg krumpira"
+      />
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label for="message" class="text-sm font-medium text-soil">Poruka (opcionalno)</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+        placeholder="Kad vam odgovara preuzimanje ili dostava?"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="mt-2 rounded-sm bg-field px-6 py-3 font-body text-sm font-medium text-parchment transition-transform hover:-translate-y-0.5 hover:bg-field/90 sm:text-base"
+    >
+      Pošalji narudžbu
+    </button>
+
+    <p id="order-form-status" class="text-sm" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#order-form');
+  const status = document.querySelector<HTMLParagraphElement>('#order-form-status');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!status) return;
+
+    const formData = new FormData(form);
+    status.textContent = 'Šaljemo vašu narudžbu...';
+    status.className = 'text-sm text-soil/70';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        status.textContent = 'Hvala! Vaša narudžba je poslana, javit ćemo vam se uskoro.';
+        status.className = 'text-sm text-field';
+        form.reset();
+      } else {
+        throw new Error(result.message ?? 'Slanje nije uspjelo.');
+      }
+    } catch {
+      status.textContent =
+        'Nešto je pošlo po zlu. Pokušajte ponovno ili nas nazovite izravno.';
+      status.className = 'text-sm text-arrow';
+    }
+  });
+</script>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="Bijeli češnjak">
+  <rect width="400" height="400" fill="#F1ECD8"/>
+  <g stroke="#2B2116" stroke-width="3" stroke-linecap="round">
+    <path d="M200,128 C186,150 178,168 178,190" fill="none" stroke-opacity="0.5"/>
+    <path d="M182,344 C176,356 172,366 170,376" fill="none"/>
+    <path d="M200,348 C200,360 200,370 200,380" fill="none"/>
+    <path d="M218,344 C224,356 228,366 230,376" fill="none"/>
+  </g>
+  <path d="M200,120 C250,120 282,168 280,222 C278,276 268,320 200,346 C132,320 122,276 120,222 C118,168 150,120 200,120 Z"
+    fill="#F1ECD8" stroke="#2B2116" stroke-width="4" stroke-linejoin="round"/>
+  <g stroke="#2B2116" stroke-opacity="0.4" stroke-width="2" fill="none">
+    <path d="M200,132 C190,190 190,280 200,338"/>
+    <path d="M172,140 C158,196 158,278 176,330"/>
+    <path d="M228,140 C242,196 242,278 224,330"/>
+    <path d="M150,168 C136,210 138,268 154,308"/>
+    <path d="M250,168 C264,210 262,268 246,308"/>
+  </g>
+</svg>
