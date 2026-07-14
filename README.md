@@ -38,7 +38,7 @@ npm run astro check   # type-check the project
 - `src/lib/data.ts` — typed accessor for the JSON above. Components import from here,
   never from the JSON file directly, and never hardcode farm-specific copy.
 - `src/assets/products/` — one image per product, referenced by filename from the JSON
-  (`"image": "garlic.svg"` → `src/assets/products/garlic.svg`).
+  (`"image": "garlic-harvest.jpg"` → `src/assets/products/garlic-harvest.jpg`).
 - `src/assets/photos/` — general farm/field photos. Referenced two ways: by `opg.heroImages`
   (the rotating hero carousel) and by each product's `processImages` array (the supporting
   gallery on that product's detail page).
@@ -59,11 +59,15 @@ npm run astro check   # type-check the project
 
 `opg.heroImages` is an ordered list of filenames (from `src/assets/photos/`) shown as a
 full-bleed background carousel behind the hero name/tagline/CTA. It rotates automatically
-every 6 seconds and can also be advanced manually with the arrow buttons or the dots — a
-manual interaction just restarts the auto-rotate timer rather than fighting it. Add,
-remove, or reorder entries in that array to change what's shown; no component code needs
-to change. Two of the current entries (`hero-placeholder-1.svg`, `hero-placeholder-2.svg`)
-are illustrated placeholders — swap them out for real photos as they become available.
+every 6 seconds and can also be advanced manually by dragging/swiping the image or clicking
+the dots — a manual interaction just restarts the auto-rotate timer rather than fighting it.
+Add, remove, or reorder entries in that array to change what's shown; no component code
+needs to change.
+
+Only the first image in the list loads eagerly (it's the page's LCP element); the rest are
+kept in inert `<template>` tags in `Hero.astro` and only get inserted into the page after
+the `load` event fires, so they don't compete with the critical first image for bandwidth.
+Keep that pattern in mind if you ever touch `Hero.astro`'s script.
 
 ### Product fields
 
