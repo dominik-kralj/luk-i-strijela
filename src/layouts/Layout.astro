@@ -14,6 +14,8 @@ interface Props {
 
 const { title, description = opg.tagline } = Astro.props;
 const pageTitle = title ? `${title} — ${opg.name}` : opg.name;
+const ogImageUrl = new URL('/og-image.jpg', Astro.site);
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -29,6 +31,21 @@ const pageTitle = title ? `${title} — ${opg.name}` : opg.name;
 
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={opg.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body>
     <slot />

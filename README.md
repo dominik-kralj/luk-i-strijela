@@ -108,10 +108,19 @@ To re-skin this site for a different family farm:
    - `src/assets/logo/logo-mark-soil.png` / `logo-mark-parchment.png` — the header/footer
      logo marks. See the comment above about light vs. dark background versions.
    - `public/favicon.png` — the browser tab icon.
+   - `public/og-image.jpg` — the link-preview image shown when the site's URL is shared in
+     WhatsApp, iMessage, Slack, etc. (1200×630, the standard Open Graph size). Replace with
+     a new banner for the new farm — a logo centered on a plain background works well.
 
    Images placed under `src/assets/` are automatically optimized, resized, and
    lazy-loaded by Astro's `<Image>` component — you don't need to compress them
-   yourself first.
+   yourself first. `public/og-image.jpg` and `public/favicon.png` are the exceptions:
+   they need stable, unhashed URLs for external services (social platforms, browser tabs)
+   to reference, so they live in `public/` and are served as-is.
+
+   If you deploy to a different URL than the one currently configured, also update `site`
+   in `astro.config.mjs` — it's used to build the absolute URLs in the Open Graph tags
+   (`src/layouts/Layout.astro`), which need to be absolute for link previews to work.
 
 3. **Set up the order form** — the contact form in `src/components/ContactForm.astro`
    posts to [Web3Forms](https://web3forms.com), a free form-to-email service with no
