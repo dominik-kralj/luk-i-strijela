@@ -22,8 +22,8 @@ const image = getProductImage(product.image);
       src={image}
       alt={product.name}
       class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-      width={480}
-      height={480}
+      widths={[320, 480, 640, 960]}
+      sizes="(min-width: 400px) 320px, 100vw"
       loading={eager ? 'eager' : 'lazy'}
     />
     <span

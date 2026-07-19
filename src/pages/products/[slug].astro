@@ -38,7 +38,7 @@ const image = getProductImage(product.image);
           src={image}
           alt={product.name}
           class="aspect-[4/5] w-full rounded-sm object-cover sm:aspect-[16/9]"
-          widths={[500, 900, 1400]}
+          widths={[500, 900, 1400, 2000]}
           sizes="(min-width: 768px) 720px, 90vw"
           loading="eager"
           fetchpriority="high"
@@ -73,7 +73,7 @@ const image = getProductImage(product.image);
               src={getPhotoImage(fileName)}
               alt=""
               class="h-40 w-full rounded-sm object-cover sm:h-56"
-              widths={[400, 700]}
+              widths={[400, 700, 1000]}
               sizes="(min-width: 640px) 340px, 46vw"
               loading="lazy"
             />
