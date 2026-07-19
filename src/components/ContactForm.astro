@@ -28,7 +28,10 @@ const WEB3FORMS_ACCESS_KEY = '02f2f631-eaa8-4086-91f6-6dd123f2d75c';
   >
     <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
     <input type="hidden" name="subject" value={`Nova narudžba — ${opg.name}`} />
+    <input type="hidden" name="from_name" value={opg.name} />
     <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+    <p class="text-xs text-soil/60">Sva polja su obavezna, osim onih označenih s "opcionalno".</p>
 
     <div class="flex flex-col gap-1.5">
       <label for="name" class="text-sm font-medium text-soil">Ime i prezime</label>
@@ -42,16 +45,82 @@ const WEB3FORMS_ACCESS_KEY = '02f2f631-eaa8-4086-91f6-6dd123f2d75c';
       />
     </div>
 
-    <div class="flex flex-col gap-1.5">
-      <label for="contact-info" class="text-sm font-medium text-soil">Telefon ili e-mail</label>
-      <input
-        id="contact-info"
-        name="contact"
-        type="text"
-        required
-        class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
-        placeholder="091 234 5678 ili ana@primjer.hr"
-      />
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div class="flex flex-col gap-1.5">
+        <label for="phone" class="text-sm font-medium text-soil">Telefon</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          required
+          class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+          placeholder="091 234 5678"
+        />
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label for="email" class="text-sm font-medium text-soil">E-mail (opcionalno)</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+          placeholder="ana@primjer.hr"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-[2fr_1fr]">
+      <div class="flex flex-col gap-1.5">
+        <label for="street" class="text-sm font-medium text-soil">Ulica</label>
+        <input
+          id="street"
+          name="street"
+          type="text"
+          required
+          class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+          placeholder="Zdihovačka ulica"
+        />
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label for="house-number" class="text-sm font-medium text-soil">Kućni broj</label>
+        <input
+          id="house-number"
+          name="house_number"
+          type="text"
+          required
+          class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+          placeholder="12"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-[2fr_1fr]">
+      <div class="flex flex-col gap-1.5">
+        <label for="city" class="text-sm font-medium text-soil">Mjesto</label>
+        <input
+          id="city"
+          name="city"
+          type="text"
+          required
+          class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+          placeholder="Jastrebarsko"
+        />
+      </div>
+
+      <div class="flex flex-col gap-1.5">
+        <label for="postal-code" class="text-sm font-medium text-soil">Poštanski broj</label>
+        <input
+          id="postal-code"
+          name="postal_code"
+          type="text"
+          inputmode="numeric"
+          required
+          class="rounded-sm border border-soil/25 bg-parchment px-3 py-2 text-soil placeholder:text-soil/40 focus:border-field focus:outline-none focus:ring-1 focus:ring-field"
+          placeholder="10450"
+        />
+      </div>
     </div>
 
     <div class="flex flex-col gap-1.5">
