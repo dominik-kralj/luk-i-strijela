@@ -7,10 +7,10 @@
     "location": "Zdihovačka ulica, Jastrebarsko, 10450",
     "deliveryArea": "Dostava u Jastrebarskom i okolici, po dogovoru, ili osobno preuzimanje na OPG-u.",
     "heroImages": [
-      "field-sunset.jpg",
-      "planting-tractor.jpg",
-      "hero-dusk-tractor.jpg",
-      "hero-daylight-field.jpg"
+      "hero-cesnjak-naslovna.jpg",
+      "hero-batat-naslovna.jpg",
+      "hero-naslovna-3.jpg",
+      "hero-naslovna-4.jpg"
     ],
     "contact": {
       "phone": "+385 92 434 6820",
@@ -29,23 +29,23 @@
       "unit": "kg",
       "category": "Povrće",
       "image": "garlic-harvest.jpg",
-      "description": "Domaći češnjak krupne glavice, brano ručno i sušeno u hladu.",
+      "description": "🧄 Češnjak, snaga prirode za bolje zdravlje!",
       "available": true,
-      "growingStory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sadimo ga u jesen, ručno, čekić po čekić, u redove razmaknute taman toliko da zemlja može disati. Cijelu zimu miruje pod slamom, a kad dođe proljeće, prvi zeleni vrhovi probiju se kroz hladnu zemlju. Vadimo ga ručno, sušimo u hladu i pletemo u vijence po starom običaju.",
-      "processImages": ["garlic-planting.jpg", "garlic-field-daytime.jpg"],
+      "growingStory": "Upoznajte naš rani ljubičasti češnjak, uzgojen od našeg vlastitog, čuvanog sjemena. Krasi ga prepoznatljiva bijela boja s roza-ljubičastim šarama te iznimno jak, aromatičan okus i miris. Svaka glavica prošla je kroz naše ruke – od pažljive sadnje do ručne obrade za vaš stol. Unesite pravi, intenzivni okus tradicije u svoju kuhinju!",
+      "processImages": ["cesnjak-lijevo-dole.jpg", "garlic-field-daytime.jpg"],
       "stripePriceId": null
     },
     {
       "id": "batat",
-      "name": "Slatki krumpir",
+      "name": "Batat",
       "price": 2.5,
       "unit": "kg",
       "category": "Povrće",
       "image": "sweet-potato.jpg",
-      "description": "Slatki krumpir uzgojen na sunčanoj parceli, bez umjetnih gnojiva.",
+      "description": "🍠 Batat, tropski okusi u domaćem izdanju!",
       "available": true,
-      "growingStory": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sadnice sadimo krajem proljeća, kad se zemlja dovoljno zagrije, a onda ih puštamo da rastu polako, cijelo ljeto, uz redovito plijevljenje i zalijevanje. Berba je ručna, krajem ljeta, kad lišće požuti i zemlja sama kaže da je vrijeme.",
-      "processImages": ["batat-cut.jpg", "sweet-potato-crate.jpg"],
+      "growingStory": "Unesite boje i zdravlje na svoj tanjur uz naš domaći batat! Uzgajamo tri vrhunske sorte: klasični slatkasti narančasti, bogati crveni te vizualno atraktivan ljubičasti batat. Svaki korijen je ručno vađen i pažljivo biran na našem mladom OPG-u. Prirodno su slatki, puni vitamina i savršeni za sve generacije – od prvih kašica do hrskavih polpeta i pečenja.",
+      "processImages": ["batat-lijevo-dole.jpg", "batat-desno-dole.jpg"],
       "stripePriceId": null
     }
   ]
