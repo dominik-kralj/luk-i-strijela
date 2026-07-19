@@ -21,7 +21,7 @@ const image = getProductImage(product.image);
     <Image
       src={image}
       alt={product.name}
-      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+      class="h-full w-full will-change-transform object-cover transition-transform duration-300 group-hover:scale-[1.03]"
       widths={[320, 480, 640, 960]}
       sizes="(min-width: 400px) 320px, 100vw"
       loading={eager ? 'eager' : 'lazy'}
