@@ -7,9 +7,10 @@
     "location": "Zdihovačka ulica, Jastrebarsko, 10450",
     "deliveryArea": "Dostava u Jastrebarskom i okolici, po dogovoru, ili osobno preuzimanje na OPG-u.",
     "heroImages": [
-      "hero-tractor-family.jpg",
       "garlic-field-daytime.jpg",
-      "batat-lijevo-dole.jpg"
+      "batat-lijevo-dole.jpg",
+      "naslovna-slika-1.jpeg",
+      "naslovna-slika-2.jpeg"
     ],
     "contact": {
       "phone": "+385 92 434 6820",
@@ -23,15 +24,15 @@
   "products": [
     {
       "id": "cesnjak",
-      "name": "Bijeli češnjak",
-      "price": 3.0,
+      "name": "Češnjak",
+      "price": 8.0,
       "unit": "kg",
       "category": "Povrće",
       "image": "hero-cesnjak-naslovna.jpg",
       "description": "🧄 Češnjak, snaga prirode za bolje zdravlje!",
       "available": true,
       "growingStory": "Upoznajte naš rani ljubičasti češnjak, uzgojen od našeg vlastitog, čuvanog sjemena. Krasi ga prepoznatljiva bijela boja s roza-ljubičastim šarama te iznimno jak, aromatičan okus i miris. Svaka glavica prošla je kroz naše ruke – od pažljive sadnje do ručne obrade za vaš stol. Unesite pravi, intenzivni okus tradicije u svoju kuhinju!",
-      "processImages": ["cesnjak-lijevo-dole.jpg", "garlic-roots-closeup.jpg"],
+      "processImages": ["cesnjak-lijevo-dole.jpg", "cesnjak-desno-narudzba.jpg"],
       "stripePriceId": null
     },
     {
@@ -44,7 +45,7 @@
       "description": "🍠 Batat, tropski okusi u domaćem izdanju!",
       "available": true,
       "growingStory": "Unesite boje i zdravlje na svoj tanjur uz naš domaći batat! Uzgajamo tri vrhunske sorte: klasični slatkasti narančasti, bogati crveni te vizualno atraktivan ljubičasti batat. Svaki korijen je ručno vađen i pažljivo biran na našem mladom OPG-u. Prirodno su slatki, puni vitamina i savršeni za sve generacije – od prvih kašica do hrskavih polpeta i pečenja.",
-      "processImages": ["batat-desno-dole.jpg", "batat-planting.jpg"],
+      "processImages": ["batat-desno-dole.jpg", "batat-desno-narudzba.jpg"],
       "stripePriceId": null
     }
   ]
